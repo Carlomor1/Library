@@ -28,6 +28,7 @@ int main() {
         cout << "5. Borrow a book" << endl;
         cout << "6. Return a book" << endl;
         cout << "7. Remove a book" << end;
+        cout << "8. Remove a member" << endl;
         cout << "0. Exit" << endl;
         cout << "Select option: ";
         cin >> option;
@@ -73,6 +74,14 @@ int main() {
             library.removeBookWISBN(isbn);
             cout << endl;
         }
+        else if (option == 8) {
+            string memberId;
+            cout << "Enter Member ID to remove: ";
+            cin >> memberId;
+            library.removeMemberById(memberId);
+            cout << endl;
+        }
+
     } while (option != 0);
 
     cout << "Goodbye!" << endl;

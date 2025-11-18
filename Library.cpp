@@ -138,3 +138,32 @@ bool Library::returnBook(const string& memberId, const string& isbn, const strin
     return true;
 }
 
+bool Library::returnBook(const string& memberId, const string& isbn, const string& returnDate) {
+    ...
+}
+
+bool Library::removeBookByIsbn(const string& isbn) {
+    Book* book = findBook(isbn);
+    if (!book) {
+        cout << "Book not found." << endl;
+        return false;
+    }
+
+    for (const auto& loan : loans) {
+        if (loan.getIsbn() == isbn && loan.isActive()) {
+            cout << "Cannot remove book: it has an active loan." << endl;
+            return false;
+        }
+    }
+
+    for (size_t i = 0; i < books.size(); i++) {
+        if (books[i].getIsbn() == isbn) {
+            books.erase(books.begin() + i);
+            cout << "Book successfully removed." << endl;
+            return true;
+        }
+    }
+
+    cout << "Unexpected error: book not removed." << endl;
+    return false;
+}

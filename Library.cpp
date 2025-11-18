@@ -194,3 +194,21 @@ bool Library::removeMemberWID(const string& memberId) {
     return false;
 }
 
+Book* Library::findBookByIsbn(const string& isbn) {
+    for (auto& book : books) {
+        if (book.getIsbn() == isbn) {
+            return &book;
+        }
+    }
+    return nullptr;
+}
+
+Book* Library::findBookByTitle(const string& title) {
+    for (auto& book : books) {
+        if (book.getTitle() == title) {
+            return &book;
+        }
+    }
+    return nullptr;
+}
+

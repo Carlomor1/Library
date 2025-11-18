@@ -27,7 +27,7 @@ int main() {
         cout << "4. List active loans" << endl;
         cout << "5. Borrow a book" << endl;
         cout << "6. Return a book" << endl;
-        cout << "7. Remove a book" << end;
+        cout << "7. Remove a book" << endl;
         cout << "8. Remove a member" << endl;
         cout << "9. Search for a book" << endl;
         cout << "0. Exit" << endl;
@@ -69,7 +69,7 @@ int main() {
             cout << endl;
         }
         else if (option == 7){
-            satring isbn;
+            string isbn;
             cout << "Enter ISBN to remove: ";
             cin >> isbn;
             library.removeBookWISBN(isbn);
@@ -110,11 +110,13 @@ int main() {
             else cout << "Book not found." << endl;
         }
         else {
-            cout << "Invalid option." << endl;
+                cout << "Invalid option." << endl;    
+            }
+                
         }
 
         cout << endl;
-    
+
     } while (option != 0);
 
     cout << "Goodbye!" << endl;

@@ -68,11 +68,11 @@ int main() {
             library.returnBook(memberId, isbn, date);
             cout << endl;
         }
-        else if (option == 7){
+        else if (option == 7) {
             string isbn;
             cout << "Enter ISBN to remove: ";
             cin >> isbn;
-            library.removeBookWISBN(isbn);
+            library.removeBookByIsbn(isbn);
             cout << endl;
         }
         else if (option == 8) {
@@ -89,30 +89,38 @@ int main() {
             cout << "2. Title" << endl;
             cout << "Choose an option: ";
             cin >> searchOption;
-        
+
             if (searchOption == 1) {
                 string isbn;
                 cout << "Enter ISBN: ";
                 cin >> isbn;
                 Book* book = library.findBookByIsbn(isbn);
-        
-                if (book) book->printInfo();
-                else cout << "Book not found." << endl;
-        }
-        else if (searchOption == 2) {
-            string title;
-            cout << "Enter Title: ";
-            cin.ignore();
-            getline(cin, title);
-            Book* book = library.findBookByTitle(title);
-    
-            if (book) book->printInfo();
-            else cout << "Book not found." << endl;
-        }
-        else {
-                cout << "Invalid option." << endl;    
+
+                if (book) {
+                    book->printInfo();
+                } else {
+                    cout << "Book not found." << endl;
+                }
             }
-                
+            else if (searchOption == 2) {
+                string title;
+                cout << "Enter Title: ";
+                cin.ignore();              // limpia el \n que quedó en el buffer
+                getline(cin, title);       // permite títulos con espacios
+                Book* book = library.findBookByTitle(title);
+
+                if (book) {
+                    book->printInfo();
+                } else {
+                    cout << "Book not found." << endl;
+                }
+            }
+            else {
+                cout << "Invalid option." << endl;   // opción inválida de búsqueda
+            }
+        }
+        else if (option != 0) {
+            cout << "Invalid option." << endl;       // opción inválida del menú
         }
 
         cout << endl;
@@ -122,3 +130,4 @@ int main() {
     cout << "Goodbye!" << endl;
     return 0;
 }
+

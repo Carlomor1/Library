@@ -84,6 +84,23 @@ void Library::listLoans(bool onlyActive) const {
     cout << endl;
 }
 
+void Library::addCD(const CD& cd) {
+    cds.push_back(cd);
+}
+void Library::showAllCDs() const {
+    if (cds.empty()) {
+        cout << "No hay CDs registrados en la biblioteca." << endl;
+        return;
+    }
+
+    cout << "=== Lista de CDs ===" << endl;
+    for (size_t i = 0; i < cds.size(); ++i) {
+        cout << "CD #" << (i + 1) << endl;
+        cds[i].printInfo();
+        cout << "--------------------" << endl;
+    }
+}
+
 bool Library::borrowBook(const string& memberId, const string& isbn, const string& borrowDate) {
     Member* member = findMember(memberId);
     if (!member) {

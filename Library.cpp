@@ -167,3 +167,30 @@ bool Library::removeBookWIsbn(const string& isbn) {
     cout << "Unexpected error: book not removed." << endl;
     return false;
 }
+
+bool Library::removeMemberWID(const string& memberId) {
+    Member* member = findMember(memberId);
+    if (!member) {
+        cout << "Member not found." << endl;
+        return false;
+    }
+
+    for (const auto& loan : loans) {
+        if (loan.getMemberId() == memberId && loan.isActive()) {
+            cout << "Cannot remove member: they have an active loan." << endl;
+            return false;
+        }
+    }
+
+    for (size_t i = 0; i < members.size(); i++) {
+        if (members[i].getId() == memberId) {
+            members.erase(members.begin() + i);
+            cout << "Member successfully removed." << endl;
+            return true;
+        }
+    }
+
+    cout << "Unexpected error: member not removed." << endl;
+    return false;
+}
+

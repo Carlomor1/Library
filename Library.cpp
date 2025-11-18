@@ -142,7 +142,7 @@ bool Library::returnBook(const string& memberId, const string& isbn, const strin
     ...
 }
 
-bool Library::removeBookByIsbn(const string& isbn) {
+bool Library::removeBookWIsbn(const string& isbn) {
     Book* book = findBook(isbn);
     if (!book) {
         cout << "Book not found." << endl;

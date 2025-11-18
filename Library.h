@@ -29,6 +29,7 @@ public:
     bool borrowBook(const string& memberId, const string& isbn, const string& borrowDate);
     bool returnBook(const string& memberId, const string& isbn, const string& returnDate);
     bool removeBookWISBN(const string& isbn);
+    bool removeMemberWID(const string& memberId);
 };
 
 #endif // LIBRARY_H

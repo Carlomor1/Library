@@ -29,6 +29,7 @@ int main() {
         cout << "6. Return a book" << endl;
         cout << "7. Remove a book" << end;
         cout << "8. Remove a member" << endl;
+        cout << "9. Search for a book" << endl;
         cout << "0. Exit" << endl;
         cout << "Select option: ";
         cin >> option;
@@ -81,7 +82,39 @@ int main() {
             library.removeMemberById(memberId);
             cout << endl;
         }
+        else if (option == 9) {
+            int searchOption;
+            cout << "Search book by:" << endl;
+            cout << "1. ISBN" << endl;
+            cout << "2. Title" << endl;
+            cout << "Choose an option: ";
+            cin >> searchOption;
+        
+            if (searchOption == 1) {
+                string isbn;
+                cout << "Enter ISBN: ";
+                cin >> isbn;
+                Book* book = library.findBookByIsbn(isbn);
+        
+                if (book) book->printInfo();
+                else cout << "Book not found." << endl;
+        }
+        else if (searchOption == 2) {
+            string title;
+            cout << "Enter Title: ";
+            cin.ignore();
+            getline(cin, title);
+            Book* book = library.findBookByTitle(title);
+    
+            if (book) book->printInfo();
+            else cout << "Book not found." << endl;
+        }
+        else {
+            cout << "Invalid option." << endl;
+        }
 
+        cout << endl;
+    
     } while (option != 0);
 
     cout << "Goodbye!" << endl;

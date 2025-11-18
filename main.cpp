@@ -30,6 +30,10 @@ int main() {
         cout << "7. Remove a book" << endl;
         cout << "8. Remove a member" << endl;
         cout << "9. Search for a book" << endl;
+        cout << "10. Add CD" << endl;
+        cout << "11. List CDs" << endl;
+        cout << "12. Rent CD" << endl;
+        cout << "13. Return CD" << endl;
         cout << "0. Exit" << endl;
         cout << "Select option: ";
         cin >> option;
@@ -119,6 +123,43 @@ int main() {
                 cout << "Invalid option." << endl;   // opción inválida de búsqueda
             }
         }
+        else if (option == 10) {
+            int id;
+            string title, artist;
+
+            cout << "CD ID: ";
+            cin >> id;
+
+            cout << "CD Title: ";
+            cin.ignore();              // limpia salto de línea
+            getline(cin, title);
+
+            cout << "Artist: ";
+            getline(cin, artist);
+
+            library.addCD(CD(id, title, artist));
+            cout << endl;
+        }
+        else if (option == 11) {
+            library.listCDs();
+            cout << endl;
+        }
+        else if (option == 12) {
+            int id;
+            cout << "CD ID to rent: ";
+            cin >> id;
+
+            library.rentCD(id);
+            cout << endl;
+        }
+        else if (option == 13) {
+            int id;
+            cout << "CD ID to return: ";
+            cin >> id;
+
+            library.returnCD(id);
+            cout << endl;
+        }
         else if (option != 0) {
             cout << "Invalid option." << endl;       // opción inválida del menú
         }
@@ -130,4 +171,3 @@ int main() {
     cout << "Goodbye!" << endl;
     return 0;
 }
-
